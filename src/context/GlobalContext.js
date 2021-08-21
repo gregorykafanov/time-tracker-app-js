@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer } from 'react';
+// import { getUsersAPI } from 'services/home/index';
 
 export const GlobalStateContext = createContext();
 export const GlobalDispatchContext = createContext();
@@ -15,8 +16,14 @@ const reducer = (state, action) => {
         users: action.payload,
       };
 
+    // case 'GET_USERS_API':
+    //   return {
+    //     ...state,
+    //     users: action.payload,
+    //   };
+
     default:
-      throw new Error('No such action type!');
+      throw new Error(`No such action type as ${action.type}!`);
   }
 };
 
@@ -31,3 +38,45 @@ export const GlobalContextProvider = ({ children }) => {
     </GlobalStateContext.Provider>
   );
 };
+
+export function useSetUsersCTX() {
+  const dispatch = useGlobalDispatchCTX();
+  const { users } = useGlobalDispatchCTX();
+
+  return [
+    users,
+    usersArray =>
+      dispatch({
+        type: 'SET_USERS',
+        payload: usersArray,
+      }),
+  ];
+}
+
+// export async function useGetUsersAPICTX() {
+//   const dispatch = useGlobalDispatchCTX();
+//   const usersAPI = await getUsersAPI();
+//   dispatch({ type: 'GET_USERS_API', payload: usersAPI });
+
+//   return usersAPI;
+// }
+
+export function useGlobalStateCTX() {
+  const state = useContext(GlobalStateContext);
+
+  if (!state) {
+    throw Error('useGlobalState must be used within AppContextProvider');
+  }
+
+  return state;
+}
+
+export function useGlobalDispatchCTX() {
+  const dispatch = useContext(GlobalDispatchContext);
+
+  if (!dispatch) {
+    throw Error('useGlobalDispatch must be used within AppContextProvider');
+  }
+
+  return dispatch;
+}
