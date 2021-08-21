@@ -1,5 +1,4 @@
 import { createContext, useContext, useReducer } from 'react';
-// import { getUsersAPI } from 'services/home/index';
 
 export const GlobalStateContext = createContext();
 export const GlobalDispatchContext = createContext();
@@ -15,12 +14,6 @@ const reducer = (state, action) => {
         ...state,
         users: action.payload,
       };
-
-    // case 'GET_USERS_API':
-    //   return {
-    //     ...state,
-    //     users: action.payload,
-    //   };
 
     default:
       throw new Error(`No such action type as ${action.type}!`);
@@ -39,6 +32,7 @@ export const GlobalContextProvider = ({ children }) => {
   );
 };
 
+//  -- hooks block--
 export function useSetUsersCTX() {
   const dispatch = useGlobalDispatchCTX();
   const { users } = useGlobalDispatchCTX();
@@ -52,14 +46,6 @@ export function useSetUsersCTX() {
       }),
   ];
 }
-
-// export async function useGetUsersAPICTX() {
-//   const dispatch = useGlobalDispatchCTX();
-//   const usersAPI = await getUsersAPI();
-//   dispatch({ type: 'GET_USERS_API', payload: usersAPI });
-
-//   return usersAPI;
-// }
 
 export function useGlobalStateCTX() {
   const state = useContext(GlobalStateContext);

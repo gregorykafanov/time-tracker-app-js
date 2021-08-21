@@ -4,16 +4,18 @@ import Details from 'pages/details';
 
 export default function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/">
-          <Home />
-        </Route>
+    <>
+      <Router>
+        <Switch>
+          <Route path="/">
+            <Home />
+          </Route>
 
-        <Route path="/details">
-          <Details />
-        </Route>
-      </Switch>
-    </Router>
+          <Route path="/details">
+            <Details />
+          </Route>
+        </Switch>
+      </Router>
+    </>
   );
 }
