@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Header, Wrapper } from './styled';
 import { useSetUsersCTX } from '../../context/GlobalContext';
 import { getUsersAPI } from '../../services/home/index';
+import NavigationTabs from 'components/home/NavigationTabs/index';
 
 export default function Home() {
   const [, setUsers] = useSetUsersCTX();
@@ -17,6 +18,7 @@ export default function Home() {
   return (
     <Wrapper>
       <Header>Time Tracker</Header>
+      <NavigationTabs />
       <UsersDropdown />
     </Wrapper>
   );
