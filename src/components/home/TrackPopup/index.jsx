@@ -33,7 +33,6 @@ export default function TrackPopup() {
       note,
       isTracked,
     };
-    // setCurrentUser(updatedUser);
     setUpdateUser(updatedUser);
     setIsPopupOpened(false);
   };

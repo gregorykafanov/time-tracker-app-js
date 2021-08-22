@@ -42,6 +42,16 @@ const reducer = (state, action) => {
         currentUser: users,
       };
 
+    case 'FILTER_TRACKED':
+      const filter = {
+        tracked: action.payload,
+      };
+
+      return {
+        ...state,
+        tableFilter: filter,
+      };
+
     default:
       throw new Error(`No such action type as ${action.type}!`);
   }
@@ -60,12 +70,22 @@ export const GlobalContextProvider = ({ children }) => {
 };
 
 //  -- hooks block--
-export function useUpdateUserCTX() {
+export function useFilterTrackedCTX() {
   const dispatch = useGlobalDispatchCTX();
-  // const { currentUser } = useContext(GlobalStateContext);
 
   return [
-    // currentUser,
+    isTracked =>
+      dispatch({
+        type: 'FILTER_TRACKED',
+        payload: isTracked,
+      }),
+  ];
+}
+
+export function useUpdateUserCTX() {
+  const dispatch = useGlobalDispatchCTX();
+
+  return [
     user =>
       dispatch({
         type: 'UPDATE_USER',

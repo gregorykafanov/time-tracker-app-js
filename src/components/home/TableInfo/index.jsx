@@ -2,7 +2,18 @@ import { useGlobalStateCTX } from 'context/GlobalContext';
 import { Wrapper, Table, HeadCell, BodyCell, Row } from './styled';
 
 export default function TableInfo() {
-  const { users } = useGlobalStateCTX();
+  const {
+    users,
+    tableFilter: { tracked },
+  } = useGlobalStateCTX();
+
+  let usersFilteredByTrack = users;
+
+  if (tracked === true) {
+    usersFilteredByTrack = usersFilteredByTrack.filter(
+      user => user.isTracked === true
+    );
+  }
 
   return (
     <Wrapper>
@@ -16,7 +27,7 @@ export default function TableInfo() {
         </thead>
 
         <tbody>
-          {users.map(user => (
+          {usersFilteredByTrack.map(user => (
             <Row key={user.id}>
               <BodyCell>{user.name}</BodyCell>
               <BodyCell>{`${user.isTracked}`}</BodyCell>
