@@ -13,7 +13,14 @@ export default function Home() {
   useEffect(() => {
     (async () => {
       const users = await getUsersAPI();
-      setUsers(users);
+      const usersExtended = users.map(user => ({
+        ...user,
+        projectTime: 0,
+        note: '',
+        isTracked: false,
+      }));
+
+      setUsers(usersExtended);
     })();
   }, [setUsers]);
 

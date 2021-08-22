@@ -51,7 +51,7 @@ export function useGlobalStateCTX() {
   const state = useContext(GlobalStateContext);
 
   if (!state) {
-    throw Error('useGlobalState must be used within AppContextProvider');
+    throw Error('useGlobalState must be used within GlobalContextProvider');
   }
 
   return state;
@@ -61,7 +61,7 @@ export function useGlobalDispatchCTX() {
   const dispatch = useContext(GlobalDispatchContext);
 
   if (!dispatch) {
-    throw Error('useGlobalDispatch must be used within AppContextProvider');
+    throw Error('useGlobalDispatch must be used within GlobalContextProvider');
   }
 
   return dispatch;
