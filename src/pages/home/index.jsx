@@ -1,12 +1,14 @@
 import UsersDropdown from 'components/home/UsersDropdown/index';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Header, Wrapper } from './styled';
 import { useSetUsersCTX } from '../../context/GlobalContext';
 import { getUsersAPI } from '../../services/home/index';
 import NavigationTabs from 'components/home/NavigationTabs/index';
+import TrackPopup from 'components/home/TrackPopup/index';
 
 export default function Home() {
   const [, setUsers] = useSetUsersCTX();
+  const [isPopupVisible, setIsPopupVisible] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -20,6 +22,7 @@ export default function Home() {
       <Header>Time Tracker</Header>
       <NavigationTabs />
       <UsersDropdown />
+      {isPopupVisible && <TrackPopup />}
     </Wrapper>
   );
 }
