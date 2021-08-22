@@ -25,7 +25,7 @@ export default function UsersDropdown() {
           -- select user --
         </option>
         {users.map((user, index) => {
-          user.index = index;
+          user.indexArray = index;
           return (
             <option key={user.id} value={JSON.stringify(user)}>
               {user.name}

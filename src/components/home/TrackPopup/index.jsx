@@ -1,4 +1,8 @@
-import { useCurrentUserCTX, useIsPopupOpenedCTX } from 'context/GlobalContext';
+import {
+  useCurrentUserCTX,
+  useIsPopupOpenedCTX,
+  useUpdateUserCTX,
+} from 'context/GlobalContext';
 import { useState } from 'react';
 import { Body, Button, Footer, Frame, Header, Wrapper } from './styled';
 
@@ -8,6 +12,7 @@ export default function TrackPopup() {
   const [projectTime, setProjectTime] = useState(currentUser.projectTime);
   const [note, setNote] = useState(currentUser.note);
   const [isTracked, setIsTracked] = useState(currentUser.isTracked);
+  const [setUpdateUser] = useUpdateUserCTX();
 
   const checkboxTogglerHandler = () => {
     setIsTracked(prev => !prev);
@@ -28,7 +33,9 @@ export default function TrackPopup() {
       note,
       isTracked,
     };
-    setCurrentUser(updatedUser);
+    // setCurrentUser(updatedUser);
+    setUpdateUser(updatedUser);
+    setIsPopupOpened(false);
   };
 
   return (

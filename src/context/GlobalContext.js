@@ -29,6 +29,16 @@ const reducer = (state, action) => {
         currentUser: action.payload,
       };
 
+    case 'UPDATE_USER':
+      const userArrayIndex = action.payload.indexArray;
+      const users = state.users;
+      const userUpdates = action.payload;
+      users.splice(userArrayIndex, 1, userUpdates);
+      return {
+        ...state,
+        currentUser: users,
+      };
+
     default:
       throw new Error(`No such action type as ${action.type}!`);
   }
@@ -47,6 +57,20 @@ export const GlobalContextProvider = ({ children }) => {
 };
 
 //  -- hooks block--
+export function useUpdateUserCTX() {
+  const dispatch = useGlobalDispatchCTX();
+  // const { currentUser } = useContext(GlobalStateContext);
+
+  return [
+    // currentUser,
+    user =>
+      dispatch({
+        type: 'UPDATE_USER',
+        payload: user,
+      }),
+  ];
+}
+
 export function useCurrentUserCTX() {
   const dispatch = useGlobalDispatchCTX();
   const { currentUser } = useContext(GlobalStateContext);
