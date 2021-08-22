@@ -1,6 +1,9 @@
+import { useGlobalStateCTX } from 'context/GlobalContext';
 import { Wrapper, Table, HeadCell, BodyCell, Row } from './styled';
 
 export default function TableInfo() {
+  const { users } = useGlobalStateCTX();
+
   return (
     <Wrapper>
       <Table>
@@ -13,21 +16,15 @@ export default function TableInfo() {
         </thead>
 
         <tbody>
-          <Row>
-            <BodyCell>Alfreds Futterkiste</BodyCell>
-            <BodyCell>Alfreds Futterkiste</BodyCell>
-            <BodyCell>Alfreds Futterkiste</BodyCell>
-          </Row>
-          {/* <Row>
-            <BodyCell>Alfreds Futterkiste</BodyCell>
-            <BodyCell>Alfreds Futterkiste</BodyCell>
-            <BodyCell>Alfreds Futterkiste</BodyCell>
-          </Row>
-          <Row>
-            <BodyCell>Alfreds Futterkiste</BodyCell>
-            <BodyCell>Alfreds Futterkiste</BodyCell>
-            <BodyCell>Alfreds Futterkiste</BodyCell>
-          </Row> */}
+          {users.map(user => (
+            <Row key={user.id}>
+              <BodyCell>{user.name}</BodyCell>
+              <BodyCell>{`${user.isTracked}`}</BodyCell>
+              <BodyCell>
+                <a href="/details">more info</a>
+              </BodyCell>
+            </Row>
+          ))}
         </tbody>
       </Table>
     </Wrapper>

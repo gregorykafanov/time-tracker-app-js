@@ -7,6 +7,9 @@ const initialState = {
   users: [],
   currentUser: {},
   isPopupOpened: false,
+  tableFilter: {
+    tracked: false,
+  },
 };
 
 const reducer = (state, action) => {
