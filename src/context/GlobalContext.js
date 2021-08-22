@@ -5,6 +5,7 @@ export const GlobalDispatchContext = createContext();
 
 const initialState = {
   users: [],
+  currentUser: {},
   isPopupOpened: false,
 };
 
@@ -20,6 +21,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         isPopupOpened: action.payload,
+      };
+
+    case 'CURRENT_USER':
+      return {
+        ...state,
+        currentUser: action.payload,
       };
 
     default:
@@ -40,6 +47,20 @@ export const GlobalContextProvider = ({ children }) => {
 };
 
 //  -- hooks block--
+export function useCurrentUserCTX() {
+  const dispatch = useGlobalDispatchCTX();
+  const { currentUser } = useContext(GlobalStateContext);
+
+  return [
+    currentUser,
+    user =>
+      dispatch({
+        type: 'CURRENT_USER',
+        payload: user,
+      }),
+  ];
+}
+
 export function useSetUsersCTX() {
   const dispatch = useGlobalDispatchCTX();
   const { users } = useContext(GlobalStateContext);
