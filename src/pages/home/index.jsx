@@ -40,7 +40,6 @@ export default function Home() {
           setUsers(usersExtended);
         } catch (error) {
           setIsInfoPopupOpened(true);
-          console.log(error);
         }
       }
 
@@ -55,7 +54,6 @@ export default function Home() {
     <Wrapper>
       <Header>Time Tracker</Header>
       <NavigationTabs />
-      {/* <UsersDropdown /> */}
       <TableInfo />
       {isInfoPopupOpened && <InfoPopup message="Connection failed!!!" />}
       {isPopupOpened && <TrackPopup />}

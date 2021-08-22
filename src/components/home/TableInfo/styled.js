@@ -18,10 +18,12 @@ export const HeadCell = styled.th`
   color: white;
 `;
 
-export const BodyCell = styled.td`
-  border: 1px solid #ddd;
-  padding: 8px;
-`;
+export const BodyCell = styled.td(props => ({
+  color: props.isTracked ? 'red' : 'black',
+  border: '1px solid #ddd',
+  padding: '8px',
+  fontWeight: 'bold',
+}));
 
 export const Row = styled.tr`
   border: 1px solid #ddd;

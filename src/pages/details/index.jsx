@@ -64,7 +64,7 @@ export default function Details() {
       <div>
         <RecordKey>BS:</RecordKey> {`${user?.company.bs}`}
       </div>
-      <div>
+      <div style={{ marginBottom: '30px' }}>
         <RecordKey>Catch Phrase:</RecordKey> {`${user?.company.catchPhrase}`}
       </div>
 

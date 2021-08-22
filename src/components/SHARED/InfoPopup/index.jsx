@@ -12,7 +12,9 @@ export default function InfoPopup({ message }) {
         <Body>{message}</Body>
 
         <Footer>
-          <Button color="red" onClick={() => setIsInfoPopupOpened(false)} />
+          <Button color="#ffbaba" onClick={() => setIsInfoPopupOpened(false)}>
+            &#10005;
+          </Button>
         </Footer>
       </Frame>
     </Wrapper>

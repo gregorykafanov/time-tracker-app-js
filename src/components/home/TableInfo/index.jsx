@@ -31,7 +31,9 @@ export default function TableInfo() {
           {usersFilteredByTrack.map(user => (
             <Row key={user.id}>
               <BodyCell>{user.name}</BodyCell>
-              <BodyCell>{`${user.isTracked}`}</BodyCell>
+              <BodyCell
+                isTracked={user.isTracked}
+              >{`${user.isTracked}`}</BodyCell>
               <BodyCell>
                 <Link to={`/details?index=${user.indexArray}`}>more info</Link>
               </BodyCell>

@@ -5,7 +5,15 @@ import {
 } from 'context/GlobalContext';
 import { useLocalStorage } from 'hooks/SHARED/index';
 import { useState } from 'react';
-import { Body, Button, Footer, Frame, Header, Wrapper } from './styled';
+import {
+  Body,
+  Button,
+  Footer,
+  Frame,
+  Header,
+  RecordKey,
+  Wrapper,
+} from './styled';
 
 export default function TrackPopup() {
   const [, setIsPopupOpened] = useIsPopupOpenedCTX();
@@ -52,30 +60,35 @@ export default function TrackPopup() {
         <Header>Track User</Header>
 
         <Body>
-          <div>Name: {currentUser.name}</div>
-
-          <div>
-            Project Time:
-            <input
-              type="text"
-              value={projectTime}
-              onChange={onProjectTypeHandler}
-            />
-            hours
+          <div style={{ marginBottom: '15px' }}>
+            <RecordKey>Name:</RecordKey> {currentUser.name}
           </div>
 
-          <div>Note: </div>
+          <div style={{ marginBottom: '15px' }}>
+            <RecordKey>Project Time:</RecordKey>
+            <div>
+              <input
+                type="text"
+                value={projectTime}
+                onChange={onProjectTypeHandler}
+              />
+            </div>
+          </div>
 
-          <textarea
-            name="popup"
-            cols="30"
-            rows="10"
-            value={note}
-            onChange={onNoteTypeHandler}
-          />
+          <div style={{ marginBottom: '15px' }}>
+            <RecordKey as="div">Note:</RecordKey>
+            <textarea
+              name="popup"
+              cols="30"
+              rows="10"
+              value={note}
+              onChange={onNoteTypeHandler}
+            />
+          </div>
 
-          <div>
-            Tracked:{' '}
+          <div style={{ marginBottom: '15px' }}>
+            <RecordKey>Tracked:</RecordKey>
+
             <input
               type="checkbox"
               checked={isTracked}
@@ -85,8 +98,12 @@ export default function TrackPopup() {
         </Body>
 
         <Footer>
-          <Button color="red" onClick={() => setIsPopupOpened(false)} />
-          <Button color="green" onClick={onSaveClickHandler} />
+          <Button color="#ffbaba" onClick={() => setIsPopupOpened(false)}>
+            &#10005;
+          </Button>
+          <Button color="#95dea8" onClick={onSaveClickHandler}>
+            &#10003;
+          </Button>
         </Footer>
       </Frame>
     </Wrapper>

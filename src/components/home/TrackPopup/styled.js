@@ -14,7 +14,6 @@ export const Wrapper = styled.div`
 
 export const Frame = styled.div`
   width: 400px;
-  height: 400px;
   border-radius: 50px;
   background-color: #dceaf2;
   display: flex;
@@ -38,7 +37,7 @@ export const Body = styled.div``;
 
 export const Footer = styled.div`
   width: 400px;
-  height: 50px;
+  height: 70px;
   background-color: white;
   border: 1px solid #d4d4d4;
   border-radius: 0 0 50px 50px;
@@ -57,3 +56,9 @@ export const Button = styled.div(props => ({
   alignItems: 'center',
   cursor: 'pointer',
 }));
+
+export const RecordKey = styled.span`
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+`;
