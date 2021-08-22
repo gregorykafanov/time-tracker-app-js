@@ -1,4 +1,3 @@
-import UsersDropdown from 'components/home/UsersDropdown/index';
 import { useEffect } from 'react';
 import { Header, Wrapper } from './styled';
 import { useIsPopupOpenedCTX, useSetUsersCTX } from 'context/GlobalContext';
@@ -23,6 +22,7 @@ export default function Home() {
 
       setUsers(usersExtended);
     })();
+    // eslint-disable-next-line
   }, []);
 
   return (

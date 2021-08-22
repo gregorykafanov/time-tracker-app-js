@@ -8,7 +8,7 @@ import { Body, Button, Footer, Frame, Header, Wrapper } from './styled';
 
 export default function TrackPopup() {
   const [, setIsPopupOpened] = useIsPopupOpenedCTX();
-  const [currentUser, setCurrentUser] = useCurrentUserCTX();
+  const [currentUser] = useCurrentUserCTX();
   const [projectTime, setProjectTime] = useState(currentUser.projectTime);
   const [note, setNote] = useState(currentUser.note);
   const [isTracked, setIsTracked] = useState(currentUser.isTracked);
@@ -51,7 +51,7 @@ export default function TrackPopup() {
               type="text"
               value={projectTime}
               onChange={onProjectTypeHandler}
-            />{' '}
+            />
             hours
           </div>
 
