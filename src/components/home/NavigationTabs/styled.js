@@ -15,4 +15,13 @@ export const Tab = styled.div`
   border-radius: 50px;
   font-family: sans-serif;
   cursor: pointer;
+  user-select: none;
+  transition: 80ms;
+  &:hover {
+    transform: scale(1.1);
+    transition: 80ms;
+  }
+  &:active {
+    transform: scale(1.05);
+  }
 `;

@@ -1,10 +1,4 @@
-// import { Wrapper, Tab } from 'pages/home/styled';
-// import { Tab } from 'pages/home/styled';
-// import { Tab } from './styled';
-
 import { Tab, Wrapper } from './styled';
-
-// import { Tab } from "./styled";
 
 export default function NavigationTabs() {
   return (
