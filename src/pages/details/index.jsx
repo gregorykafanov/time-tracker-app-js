@@ -15,7 +15,7 @@ export default function Details() {
       <Header>User Details</Header>
       <hr />
 
-      <Title>Contacts:</Title>
+      <Title>Info:</Title>
       <div>
         <RecordKey>Name:</RecordKey> {user?.name}
       </div>
