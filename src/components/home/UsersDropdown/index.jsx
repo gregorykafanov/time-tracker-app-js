@@ -11,20 +11,27 @@ export default function UsersDropdown() {
   const [, setCurrentUser] = useCurrentUserCTX();
 
   const onClickHandler = event => {
-    const selectedUser = JSON.parse(event.target.value);
-    setCurrentUser(selectedUser);
-    setIsPopupOpened(true);
+    if (Number(event.target.value) !== -1) {
+      const selectedUser = JSON.parse(event.target.value);
+      setCurrentUser(selectedUser);
+      setIsPopupOpened(true);
+    }
   };
 
   return (
     <Wrapper>
       <select name="users" onClick={onClickHandler}>
-        <option defaultValue="selected">-- select user --</option>
-        {users.map(user => (
-          <option key={user.id} value={JSON.stringify(user)}>
-            {user.name}
-          </option>
-        ))}
+        <option value={-1} defaultValue="selected">
+          -- select user --
+        </option>
+        {users.map((user, index) => {
+          user.index = index;
+          return (
+            <option key={user.id} value={JSON.stringify(user)}>
+              {user.name}
+            </option>
+          );
+        })}
       </select>
     </Wrapper>
   );
