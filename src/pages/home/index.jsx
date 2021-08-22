@@ -5,6 +5,7 @@ import { useIsPopupOpenedCTX, useSetUsersCTX } from 'context/GlobalContext';
 import { getUsersAPI } from 'services/home/index';
 import NavigationTabs from 'components/home/NavigationTabs/index';
 import TrackPopup from 'components/home/TrackPopup/index';
+import TableInfo from 'components/home/TableInfo/index';
 
 export default function Home() {
   const [, setUsers] = useSetUsersCTX();
@@ -29,7 +30,7 @@ export default function Home() {
       <Header>Time Tracker</Header>
       <NavigationTabs />
       <UsersDropdown />
-      {/* <button onClick={() => setIsPopupOpened(true)}>Text popup</button> */}
+      <TableInfo />
       {isPopupOpened && <TrackPopup />}
     </Wrapper>
   );
