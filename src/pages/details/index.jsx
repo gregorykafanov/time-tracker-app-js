@@ -1,12 +1,15 @@
-import { useGlobalStateCTX } from 'context/GlobalContext';
+// import { useGlobalStateCTX } from 'context/GlobalContext';
 import { useQuery } from 'hooks/details/index';
+import { useLocalStorage } from 'hooks/SHARED/index';
 // import { useEffect } from 'react';
 
 export default function Details({ match, location }) {
-  const { users } = useGlobalStateCTX();
+  // const { users } = useGlobalStateCTX();
+  const [usersLS] = useLocalStorage('_TRACK-APP_', []);
   const query = useQuery();
   const userArrayIndex = query.get('index');
-  const user = users[userArrayIndex];
+  const user = usersLS[userArrayIndex];
+  // const user = users[userArrayIndex];
 
   // useEffect(() => {}, []);
 

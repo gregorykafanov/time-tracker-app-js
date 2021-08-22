@@ -3,6 +3,7 @@ import {
   useIsPopupOpenedCTX,
   useUpdateUserCTX,
 } from 'context/GlobalContext';
+import { useLocalStorage } from 'hooks/SHARED/index';
 import { useState } from 'react';
 import { Body, Button, Footer, Frame, Header, Wrapper } from './styled';
 
@@ -13,6 +14,10 @@ export default function TrackPopup() {
   const [note, setNote] = useState(currentUser.note);
   const [isTracked, setIsTracked] = useState(currentUser.isTracked);
   const [setUpdateUser] = useUpdateUserCTX();
+  const [localStorageValue, setLocalStorageValue] = useLocalStorage(
+    '_TRACK-APP_',
+    null
+  );
 
   const checkboxTogglerHandler = () => {
     setIsTracked(prev => !prev);
@@ -33,7 +38,16 @@ export default function TrackPopup() {
       note,
       isTracked,
     };
+
+    // console.log('+', localStorageValue[0]);
+    // console.log('currentUser.indexArray', currentUser.indexArray);
+    // console.log('->', localStorageValue[currentUser.indexArray]);
     setUpdateUser(updatedUser);
+    const localStorageUsers = localStorageValue;
+    localStorageUsers.splice(currentUser.indexArray, 1, updatedUser);
+    // console.log('localStorageUsers', localStorageUsers);
+
+    setLocalStorageValue(localStorageUsers);
     setIsPopupOpened(false);
   };
 
