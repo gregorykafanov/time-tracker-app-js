@@ -14,15 +14,21 @@ export default function NavigationTabs() {
     setIsTrackedItemsActive(false);
   };
 
+  const onTrackedItemsTabClickHandler = () => {
+    setIsFilterByTrack(true);
+    setIsTrackedActive(false);
+    setIsTrackedItemsActive(true);
+  };
+
   return (
     <Wrapper>
       <UsersDropdown />
-      <Tab active={isTrackerActive} onClick={() => setIsFilterByTrack(false)}>
+      <Tab active={isTrackerActive} onClick={onTrackerTabClickHandler}>
         Tracker
       </Tab>
       <Tab
         active={isTrackedItemsActive}
-        onClick={() => setIsFilterByTrack(true)}
+        onClick={onTrackedItemsTabClickHandler}
       >
         Tracked Items
       </Tab>
