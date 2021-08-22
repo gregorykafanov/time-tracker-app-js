@@ -3,7 +3,7 @@ import {
   useGlobalStateCTX,
   useIsPopupOpenedCTX,
 } from 'context/GlobalContext';
-import { Wrapper } from 'pages/home/styled';
+import { Select } from './styled';
 
 export default function UsersDropdown() {
   const { users } = useGlobalStateCTX();
@@ -19,20 +19,18 @@ export default function UsersDropdown() {
   };
 
   return (
-    <Wrapper>
-      <select name="users" onClick={onClickHandler}>
-        <option value={-1} defaultValue="selected">
-          -- select user --
-        </option>
-        {users.map((user, index) => {
-          user.indexArray = index;
-          return (
-            <option key={user.id} value={JSON.stringify(user)}>
-              {user.name}
-            </option>
-          );
-        })}
-      </select>
-    </Wrapper>
+    <Select name="users" onClick={onClickHandler}>
+      <option value={-1} defaultValue="selected">
+        -- select user --
+      </option>
+      {users.map((user, index) => {
+        user.indexArray = index;
+        return (
+          <option key={user.id} value={JSON.stringify(user)}>
+            {user.name}
+          </option>
+        );
+      })}
+    </Select>
   );
 }

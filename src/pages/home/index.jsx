@@ -29,7 +29,7 @@ export default function Home() {
     <Wrapper>
       <Header>Time Tracker</Header>
       <NavigationTabs />
-      <UsersDropdown />
+      {/* <UsersDropdown /> */}
       <TableInfo />
       {isPopupOpened && <TrackPopup />}
     </Wrapper>
