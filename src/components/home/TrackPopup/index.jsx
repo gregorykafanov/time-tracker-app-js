@@ -1,10 +1,11 @@
-import { Body, Footer, Frame, Header, Wrapper } from './styled';
+import { Body, Button, Footer, Frame, Header, Wrapper } from './styled';
 
-export default function TrackPopup() {
+export default function TrackPopup({ setIsPopupVisibleCb }) {
   return (
     <Wrapper>
       <Frame>
         <Header>Track User</Header>
+
         <Body>
           <div>Name: Jim Morris</div>
           <div>Project Time: 17 hours</div>
@@ -14,7 +15,11 @@ export default function TrackPopup() {
             Tracked: <input type="checkbox" />
           </div>
         </Body>
-        <Footer></Footer>
+
+        <Footer>
+          <Button color="red" onClick={() => setIsPopupVisibleCb(false)} />
+          <Button color="green" />
+        </Footer>
       </Frame>
     </Wrapper>
   );

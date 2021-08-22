@@ -5,8 +5,6 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: white; */
-  /* filter: blur(4px); */
   backdrop-filter: blur(4px);
   top: 0;
   left: 0;
@@ -19,6 +17,10 @@ export const Frame = styled.div`
   height: 400px;
   border-radius: 50px;
   background-color: #dceaf2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const Header = styled.div`
@@ -41,6 +43,17 @@ export const Footer = styled.div`
   border: 1px solid #d4d4d4;
   border-radius: 0 0 50px 50px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 `;
+
+export const Button = styled.div(props => ({
+  borderRadius: '50%',
+  height: '30px',
+  width: '30px',
+  backgroundColor: props.color,
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  cursor: 'pointer',
+}));

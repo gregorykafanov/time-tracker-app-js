@@ -8,7 +8,7 @@ import TrackPopup from 'components/home/TrackPopup/index';
 
 export default function Home() {
   const [, setUsers] = useSetUsersCTX();
-  const [isPopupVisible, setIsPopupVisible] = useState(true);
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -22,7 +22,8 @@ export default function Home() {
       <Header>Time Tracker</Header>
       <NavigationTabs />
       <UsersDropdown />
-      {isPopupVisible && <TrackPopup />}
+      <button onClick={() => setIsPopupVisible(true)}>Text popup</button>
+      {isPopupVisible && <TrackPopup setIsPopupVisibleCb={setIsPopupVisible} />}
     </Wrapper>
   );
 }
