@@ -39,14 +39,9 @@ export default function TrackPopup() {
       isTracked,
     };
 
-    // console.log('+', localStorageValue[0]);
-    // console.log('currentUser.indexArray', currentUser.indexArray);
-    // console.log('->', localStorageValue[currentUser.indexArray]);
     setUpdateUser(updatedUser);
     const localStorageUsers = localStorageValue;
     localStorageUsers.splice(currentUser.indexArray, 1, updatedUser);
-    // console.log('localStorageUsers', localStorageUsers);
-
     setLocalStorageValue(localStorageUsers);
     setIsPopupOpened(false);
   };
