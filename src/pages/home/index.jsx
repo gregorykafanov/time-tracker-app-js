@@ -1,14 +1,14 @@
 import UsersDropdown from 'components/home/UsersDropdown/index';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Header, Wrapper } from './styled';
-import { useSetUsersCTX } from '../../context/GlobalContext';
-import { getUsersAPI } from '../../services/home/index';
+import { useIsPopupOpenedCTX, useSetUsersCTX } from 'context/GlobalContext';
+import { getUsersAPI } from 'services/home/index';
 import NavigationTabs from 'components/home/NavigationTabs/index';
 import TrackPopup from 'components/home/TrackPopup/index';
 
 export default function Home() {
   const [, setUsers] = useSetUsersCTX();
-  const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [isPopupOpened] = useIsPopupOpenedCTX();
 
   useEffect(() => {
     (async () => {
@@ -22,15 +22,15 @@ export default function Home() {
 
       setUsers(usersExtended);
     })();
-  }, [setUsers]);
+  }, []);
 
   return (
     <Wrapper>
       <Header>Time Tracker</Header>
       <NavigationTabs />
       <UsersDropdown />
-      <button onClick={() => setIsPopupVisible(true)}>Text popup</button>
-      {isPopupVisible && <TrackPopup setIsPopupVisibleCb={setIsPopupVisible} />}
+      {/* <button onClick={() => setIsPopupOpened(true)}>Text popup</button> */}
+      {isPopupOpened && <TrackPopup />}
     </Wrapper>
   );
 }

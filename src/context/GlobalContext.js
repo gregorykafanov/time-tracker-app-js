@@ -5,6 +5,7 @@ export const GlobalDispatchContext = createContext();
 
 const initialState = {
   users: [],
+  isPopupOpened: false,
 };
 
 const reducer = (state, action) => {
@@ -13,6 +14,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         users: action.payload,
+      };
+
+    case 'SET_IS_POPUP_OPENED':
+      return {
+        ...state,
+        isPopupOpened: action.payload,
       };
 
     default:
@@ -35,7 +42,7 @@ export const GlobalContextProvider = ({ children }) => {
 //  -- hooks block--
 export function useSetUsersCTX() {
   const dispatch = useGlobalDispatchCTX();
-  const { users } = useGlobalDispatchCTX();
+  const { users } = useContext(GlobalStateContext);
 
   return [
     users,
@@ -43,6 +50,20 @@ export function useSetUsersCTX() {
       dispatch({
         type: 'SET_USERS',
         payload: usersArray,
+      }),
+  ];
+}
+
+export function useIsPopupOpenedCTX() {
+  const dispatch = useGlobalDispatchCTX();
+  const { isPopupOpened } = useContext(GlobalStateContext);
+
+  return [
+    isPopupOpened,
+    isOpened =>
+      dispatch({
+        type: 'SET_IS_POPUP_OPENED',
+        payload: isOpened,
       }),
   ];
 }

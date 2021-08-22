@@ -1,8 +1,11 @@
+import { useIsPopupOpenedCTX } from 'context/GlobalContext';
 import { Body, Button, Footer, Frame, Header, Wrapper } from './styled';
 
-export default function TrackPopup({ setIsPopupVisibleCb }) {
+export default function TrackPopup() {
+  const [, setIsPopupOpened] = useIsPopupOpenedCTX();
+
   return (
-    <Wrapper onClick={() => setIsPopupVisibleCb(false)}>
+    <Wrapper onClick={() => setIsPopupOpened(false)}>
       <Frame onClick={e => e.stopPropagation()}>
         <Header>Track User</Header>
 
@@ -17,7 +20,7 @@ export default function TrackPopup({ setIsPopupVisibleCb }) {
         </Body>
 
         <Footer>
-          <Button color="red" onClick={() => setIsPopupVisibleCb(false)} />
+          <Button color="red" onClick={() => setIsPopupOpened(false)} />
           <Button color="green" />
         </Footer>
       </Frame>
