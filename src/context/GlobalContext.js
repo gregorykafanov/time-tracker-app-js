@@ -7,6 +7,7 @@ const initialState = {
   users: [],
   currentUser: {},
   isPopupOpened: false,
+  isInfoPopupOpened: false,
   tableFilter: {
     tracked: false,
   },
@@ -24,6 +25,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         isPopupOpened: action.payload,
+      };
+
+    case 'SET_IS_MESSAGE_POPUP_OPENED':
+      return {
+        ...state,
+        isInfoPopupOpened: action.payload,
       };
 
     case 'CURRENT_USER':
@@ -131,6 +138,20 @@ export function useIsPopupOpenedCTX() {
     isOpened =>
       dispatch({
         type: 'SET_IS_POPUP_OPENED',
+        payload: isOpened,
+      }),
+  ];
+}
+
+export function useIsMessagePopupOpenedCTX() {
+  const dispatch = useGlobalDispatchCTX();
+  const { isInfoPopupOpened } = useContext(GlobalStateContext);
+
+  return [
+    isInfoPopupOpened,
+    isOpened =>
+      dispatch({
+        type: 'SET_IS_MESSAGE_POPUP_OPENED',
         payload: isOpened,
       }),
   ];
