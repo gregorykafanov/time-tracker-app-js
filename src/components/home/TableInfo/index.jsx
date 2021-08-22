@@ -1,4 +1,5 @@
 import { useGlobalStateCTX } from 'context/GlobalContext';
+import { Link } from 'react-router-dom';
 import { Wrapper, Table, HeadCell, BodyCell, Row } from './styled';
 
 export default function TableInfo() {
@@ -32,7 +33,7 @@ export default function TableInfo() {
               <BodyCell>{user.name}</BodyCell>
               <BodyCell>{`${user.isTracked}`}</BodyCell>
               <BodyCell>
-                <a href="/details">more info</a>
+                <Link to={`/details?index=${user.indexArray}`}>more info</Link>
               </BodyCell>
             </Row>
           ))}
